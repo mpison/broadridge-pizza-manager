@@ -1,0 +1,8 @@
+<h1>Pizza Orders</h1>
+<div *ngIf="pizzaOrderList == null">
+  <h5>No Pizza Orders in the List</h5>
+</div>
+<div *ngFor="let pizzaOrder of pizzaOrdersList | async" style="width: 300px;">
+  <br/>
+  <app-pizza-order-details [pizzaOrder]='pizzaOrder'></app-pizza-order-details>
+</div>

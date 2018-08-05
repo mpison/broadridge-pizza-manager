@@ -1,0 +1,22 @@
+<h1>Search By OrderId</h1>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="orderId">OrderId:</label>
+      <input type="number" class="form-control" id="orderId" required [(ngModel)]="orderId" name="orderId">
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Search</button>
+    </div>
+  </form>
+    <br/>
+    <h3 *ngIf="pizzaOrderArr.length > 0">Results:</h3>
+    <h3 *ngIf="pizzaOrderArr.length == 0">No Match found</h3>
+    <br/>
+
+    <div *ngFor="let pizzaOrder of pizzaOrderArr" style="width: 300px;">
+      <app-pizza-order-details [pizzaOrder]='pizzaOrder'></app-pizza-order-details>
+    </div>
+
+</div>

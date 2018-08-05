@@ -1,0 +1,14 @@
+<div *ngIf="pizzaOrder">
+  <div>
+    <label>OrderId: </label> {{pizzaOrder.orderId}}
+  </div>
+  <div>
+    <label>Quantity: </label> {{pizzaOrder.quantity}}
+  </div>
+  <div>
+    <label>Pizza Id: </label> {{pizzaOrder.pizza.pizzaId}}
+    <br>
+    <label>Pizza Name: </label> {{pizzaOrder.pizza.pizzaName}}
+  </div>
+  <hr/>
+</div>

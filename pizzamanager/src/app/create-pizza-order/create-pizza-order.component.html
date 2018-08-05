@@ -1,0 +1,41 @@
+<div [hidden]="submitted" style="width: 300px;">
+  <h1>Order Pizza</h1>
+  <form (ngSubmit)="onSubmit(pizzaForm)" #pizzaForm="ngForm">
+    <br/>
+    <div ngModelGroup="pizza" #pizza="ngModelGroup">
+      <label for="pizzaId">Pizza</label>
+      <select id="pizzaId" class="form-control" ngModel name="pizzaId" required #pizzaId="ngModel">
+        <option *ngFor="let pizza of pizzaOptions" [value]="pizza.pizzaId">
+          {{pizza.pizzaName}}
+        </option>
+      </select>
+      <div *ngIf="pizzaId.invalid && (pizzaId.dirty || pizzaId.touched)"
+           class="alert alert-danger">
+        <div *ngIf="quantity.errors.required">
+          Pizza is required.
+        </div>
+      </div>
+    </div>
+    <br/>
+    <label for="quantity">Quantity</label>
+    <input type="number" min="1" class="form-control" id="quantity" required ngModel name="quantity"
+           #quantity="ngModel"/>
+    <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)"
+         class="alert alert-danger">
+      <div *ngIf="quantity.errors.required">
+        Quantity is required.
+      </div>
+      <div *ngIf="quantity.errors.number">
+        Quantity should be more than 0.
+      </div>
+    </div>
+    <!--<pre>{{ pizzaForm.value | json }}</pre>-->
+    <br/>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newPizzaOrder()">Add</button>
+</div>
